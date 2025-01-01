@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرحباً بك</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            direction: rtl;
+        }
+        .welcome {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>مرحباً بك في تطبيقنا المصغر!</h1>
+    <p id="welcome-message" class="welcome">جاري تحميل اسم المستخدم...</p>
+    <script>
+        // التحقق من دعم Telegram Web Apps
+        if (window.Telegram && Telegram.WebApp) {
+            const tg = Telegram.WebApp;
+
+            // بدء Web App
+            tg.ready();
+
+            // الحصول على اسم المستخدم
+            const username = tg.initDataUnsafe?.user?.first_name || "مجهول";
+            
+            // عرض رسالة الترحيب
+            document.getElementById('welcome-message').textContent = `أهلاً، ${username}! 😊`;
+
+            // خيارات إضافية: إذا أردت تخصيص تجربة المستخدم
+            tg.expand(); // يجعل التطبيق ملء الشاشة
+        } else {
+            document.getElementById('welcome-message').textContent = "هذا التطبيق يعمل فقط داخل تيليجرام.";
+        }
+    </script>
+</body>
+</html>

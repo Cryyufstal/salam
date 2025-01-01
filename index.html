@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مرحباً بك</title>
+  <title>مرحباً بك في تيليجرام</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -21,16 +21,19 @@
 <body>
   <h1>مرحباً بك في تطبيق تيليجرام المصغر!</h1>
   <div id="user-data" class="welcome">جاري تحميل بيانات المستخدم...</div>
+
+  <!-- تحميل مكتبة @twa-dev/sdk -->
   <script src="https://cdn.jsdelivr.net/npm/@twa-dev/sdk@latest/dist/index.umd.min.js"></script>
+  
   <script>
-    // التحقق من دعم Telegram Web Apps
+    // تحقق من دعم WebApp
     if (window.Telegram && Telegram.WebApp) {
       const tg = Telegram.WebApp;
 
-      // بدء Web App
+      // بدء WebApp
       tg.ready();
 
-      // الحصول على بيانات المستخدم
+      // جلب بيانات المستخدم من WebApp
       const user = tg.initDataUnsafe?.user;
 
       if (user) {
@@ -46,7 +49,7 @@
         document.getElementById('user-data').textContent = "تعذر الحصول على بيانات المستخدم.";
       }
     } else {
-      document.getElementById('user-data').textContent = "11هذا التطبيق يعمل فقط داخل تيليجرام.";
+      document.getElementById('user-data').textContent = "هذا التطبيق يعمل فقط داخل تيليجرام22.";
     }
   </script>
 </body>
